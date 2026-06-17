@@ -16,7 +16,7 @@ export const currentWeather = [checkSchema(cityValidationSchema), async(req:Requ
             const result = validationResult(req);
             if (!result.isEmpty()) return res.status(400).send({ error: result.array() });
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${apiKey}`);
-            const weather = await Weather.create({ city: q, requestType: "currentWeather", Data: response.data })
+            const weather = await Weather.create({ city: `${q}`, requestType: "currentWeather", Data: response.data })
             return res.send(response.data);
         } catch(err) {
             console.error(err);
@@ -34,7 +34,7 @@ export const forecastWeather = [checkSchema(forecastValidationSchema), async(req
         const weather = await Weather.create({ city: `${response.data.city}`, requestType: "forecastWeather", Data: [response.data.city, response.data.list[2].weather, response.data.list[2].dt_txt]
     });
     
-        return res.send( response.data.city, response.data.list[2].weather, response.data.list[2].dt_txt)
+        return res.send( response.data.city, response.list[2].weather, response.data.list[2].dt_txt)
     } catch(err) {
         console.error(err);
     }
