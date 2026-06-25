@@ -34,7 +34,7 @@ export const forecastWeather = [checkSchema(forecastValidationSchema), async(req
         const weather = await Weather.create({ city: `${response.data.city}`, requestType: "forecastWeather", Data: [response.data.city, response.data.list[2].weather, response.data.list[2].dt_txt]
     });
     
-        return res.send( response.data.city, response.list[2].weather, response.data.list[2].dt_txt)
+        return res.send({Data: [response.data.city, response.data.list[2].weather, response.data.list[2].dt_txt] });
     } catch(err) {
         console.error(err);
     }
