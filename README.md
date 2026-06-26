@@ -20,7 +20,7 @@ A simple RESTful API built with Node.js and Express.js that provides real-time w
 
 📦 Installation
 bash
-git clone https://github.com/AbdulSobur498/weather-data-api.git
+git clone https://github.com/AbdulSobur498/WEATHER_DATA_API
 cd weather-data-api
 npm install
 npm run dev
